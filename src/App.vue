@@ -1,8 +1,9 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <router-link to="/subjects">Dashboard</router-link> |
+      <router-link to="/flashcards">Problems</router-link> |
+      <router-link to="/about">Account</router-link>
     </div>
     <router-view/>
   </div>
@@ -18,6 +19,7 @@
 }
 #nav {
   padding: 30px;
+  
 }
 
 #nav a {
