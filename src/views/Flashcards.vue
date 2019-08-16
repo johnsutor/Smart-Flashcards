@@ -1,7 +1,7 @@
 <template>
   <div>
-    <h1>This is the page for problems ok</h1>
-    <FlashCard></FlashCard>
+    <h1>name of flashcard</h1>
+    <FlashCard flipped=false question="question" solution = "this is the solution"></FlashCard>
   </div>
 </template>
 
@@ -9,7 +9,7 @@
 import FlashCard from '@/components/Flashcard.vue'
 
 export default {
-  name: 'flashcards',
+  name: 'Flashcards',
   components: {
     FlashCard
   }

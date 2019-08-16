@@ -8,14 +8,19 @@
             See solution
         </v-icon>
         <div>
+            {{subject}}
+        </div>
+        <div>
             {{question}}
         </div>
+        <input v-model="userSolution" placeholder = 'Enter solution'>
+        <button v-on:click="checkSolution">Check</button>
       </div>
       <div class="back">
         <slot name="back"></slot>
         <v-icon class="backFlipBtn" 
             v-on:click="flipped=false">
-            See question 
+            See question again
         </v-icon>
         <div>
             {{solution}}
@@ -28,12 +33,24 @@
 <script>
 export default {
   name: 'FlashCard',
-  data() {
-    return {
-        flipped: false,
-        question: 'This is a question',
-        solution: 'This is the solution',
-    };
+  props: {
+    flipped: Boolean,
+    cardID: String,
+    question: String,
+    solution: String,
+    userSolution: String,
+  },
+  methods: {
+    setSubject(str) {
+      this.subject = str;
+    },  
+    checkSolution() {
+      if (this.userSolution == this.solution) {
+          this.flipped = !this.flipped;
+      } else {
+          alert("wrong answer niga");
+      }
+    }
   }
 };
 </script>
@@ -82,11 +99,14 @@ i.backFlipBtn {
   -ms-transform-style: preserve-3d;
   transition: 0.6s;
   transform-style: preserve-3d;
-  height: 80%;
-  width: 100%;
+  height:66%;
+  width: 200px;
+  left: 50%;
+  margin-left: -100px;
   border-style: outset;
   border-radius: 5px;
   position: absolute;
+
   
 }
 .back {
