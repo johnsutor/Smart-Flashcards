@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>name of flashcard</h1>
-    <FlashCard flipped=false question="question" solution = "this is the solution"></FlashCard>
+    <FlashCard flipped=false :question="question" :solution="solution"></FlashCard>
   </div>
 </template>
 

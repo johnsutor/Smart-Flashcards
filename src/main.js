@@ -10,7 +10,16 @@ Vue.use(Vuetify)
 Vue.config.productionTip = false
 
 // Initialize Firebase
-import firebaseConfig from './firebaseConfig'
+var firebaseConfig = {
+  apiKey: process.env.FIREBASE_API_KEY,
+  authDomain: "intelligent-flashcards.firebaseapp.com",
+  databaseURL: "https://intelligent-flashcards.firebaseio.com",
+  projectId: "intelligent-flashcards",
+  storageBucket: "",
+  messagingSenderId: process.env.FIREBASE_MESSAGE_ID,
+  appId: process.env.FIREBASE_APP_ID
+};
+
 firebase.initializeApp(firebaseConfig)
 
 new Vue({
