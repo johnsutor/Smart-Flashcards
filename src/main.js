@@ -11,13 +11,13 @@ Vue.config.productionTip = false
 
 // Initialize Firebase
 var firebaseConfig = {
-  apiKey: process.env.FIREBASE_API_KEY,
-  authDomain: "intelligent-flashcards.firebaseapp.com",
-  databaseURL: "https://intelligent-flashcards.firebaseio.com",
-  projectId: "intelligent-flashcards",
+  apiKey: process.env.VUE_APP_FIREBASE_API_KEY,
+  authDomain: process.env.VUE_APP_FIREBASE_PROJECT_ID + ".firebaseapp.com",
+  databaseURL: "https://" + process.env.VUE_APP_FIREBASE_PROJECT_ID + ".firebaseio.com",
+  projectId: process.env.VUE_APP_FIREBASE_PROJECT_ID,
   storageBucket: "",
-  messagingSenderId: process.env.FIREBASE_MESSAGE_ID,
-  appId: process.env.FIREBASE_APP_ID
+  messagingSenderId: process.env.VUE_APP_FIREBASE_MESSAGE_ID,
+  appId: process.env.VUE_APP_FIREBASE_APP_ID
 };
 
 firebase.initializeApp(firebaseConfig)
