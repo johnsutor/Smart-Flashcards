@@ -2,11 +2,16 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import Vuetify from 'vuetify/lib'
-
-Vue.use(Vuetify)
+import firebase from 'firebase'
 
 Vue.config.productionTip = false
+
+// Initialize Firebase
+import firebaseConfig from './firebaseConfig'
+firebase.initializeApp(firebaseConfig)
+
+//Event bus
+export const eventBus = new Vue()
 
 new Vue({
   router,
