@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="currentSubject">
+    <div v-if="currentSubject != 'select-subject'">
       <h3>{{$route.params.subject}}</h3>
       <FlashCard question="question" solution="this is the solution" ></FlashCard>
     </div>

@@ -11,6 +11,7 @@
         <div>
             {{question}}
         </div>
+        <div>{{choices[0]}}</div>
         <input v-model="userSolution" placeholder = 'Enter solution'>
         <button v-on:click="checkSolution">Check</button>
       </div>
@@ -34,10 +35,11 @@ export default {
   props: {
     cardID: String,
     question: String,
-    choices: Array,
     solution: String,
     userSolution: String,
     subject: String,
+    choices: Array,
+    correctIndex: Number
   },
   data() {
     return {
@@ -45,8 +47,9 @@ export default {
     }
   },
   methods: {
-    checkSolution() {
-      if (this.userSolution == this.solution) {
+    checkSolution(chosenIndex) {
+      if (chosenIndex == this.correctIndex) {
+          alert("correct");
           this.flipped = !this.flipped;
       } else {
           alert("wrong answer niga");

@@ -1,9 +1,9 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/" id=logo>Smart FlashCards </router-link>    
+      <h2><router-link to="/" id=logo>Smart FlashCards </router-link>    </h2>
       <router-link to="/subjects">Subjects</router-link> 
-      <router-link to="/flashcards/selectsubject">Problems</router-link> 
+      <router-link to="/flashcards/select-subject">Problems</router-link> 
       <router-link to="/account">Account</router-link>
     </div>
     <router-view/>
