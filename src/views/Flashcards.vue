@@ -14,7 +14,6 @@
 <script>
 import FlashCard from '@/components/Flashcard.vue'
 import {eventBus} from "../main";
-
 export default {
   name: 'Flashcards',
   components: {
@@ -29,7 +28,6 @@ export default {
     eventBus.$on('selectedSubject', (message) => {
         this.currentSubject = message;
     });
-
   }
   /*
   created() {

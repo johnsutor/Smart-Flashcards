@@ -6,11 +6,8 @@
         <slot name="front"></slot>
         <v-icon class="frontFlipBtn" 
             v-on:click="flipped=true">
-            See solution
+            See explanation
         </v-icon>
-        <div>
-            {{subject}}
-        </div>
         <div>
             {{question}}
         </div>
@@ -37,6 +34,7 @@ export default {
   props: {
     cardID: String,
     question: String,
+    choices: Array,
     solution: String,
     userSolution: String,
     subject: String,

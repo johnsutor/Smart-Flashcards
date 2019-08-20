@@ -9,10 +9,8 @@
 // import firebase from 'firebase';
 
 export default {
-  name: 'HelloWorld',
-  props: {
-    msg: String
-  },
+  name: 'LoginBox',
+
   methods: {
     googleLogin() {
       alert('Google sign in');
