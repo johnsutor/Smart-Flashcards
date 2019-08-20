@@ -13,6 +13,7 @@
 
 <script>
 import FlashCard from '@/components/Flashcard.vue'
+
 import {eventBus} from "../main";
 
 export default {

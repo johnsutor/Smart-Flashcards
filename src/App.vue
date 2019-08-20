@@ -19,19 +19,6 @@
   color: #2c3e50;
   margin:0;
 }
-#nav {
-  width: stretch;
-  align-content: right;
-  padding: 10px;
-  display: inline-block;
-  background-color:lightseagreen;
-  margin:0;
-}
-#logo {
-  font-size: 18pt;
-  display: inline-block;
-  padding-right: 30px;
-}
 #nav a {
   color: #2c3e50;
 }
