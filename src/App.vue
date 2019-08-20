@@ -1,11 +1,12 @@
 <template>
   <div id="app">
-    <router-view/>
     <div id="nav">
-      <router-link to="/subjects">Dashboard</router-link> |
-      <router-link to="/flashcards">Problems</router-link> |
-      <router-link to="/about">Account</router-link>
+      <router-link to="/" id=logo>Smart FlashCards </router-link>    
+      <router-link to="/subjects">Subjects</router-link> 
+      <router-link to="/flashcards/selectsubject">Problems</router-link> 
+      <router-link to="/account">Account</router-link>
     </div>
+    <router-view/>
   </div>
 </template>
 
@@ -16,17 +17,13 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  margin:0;
 }
-#nav {
-  padding: 30px;
-}
-
 #nav a {
-  font-weight: bold;
   color: #2c3e50;
 }
 
 #nav a.router-link-exact-active {
-  color: #42b983;
+  color: darkgreen;
 }
 </style>

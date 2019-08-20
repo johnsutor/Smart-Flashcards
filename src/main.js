@@ -2,10 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import Vuetify from 'vuetify/lib'
 import firebase from 'firebase'
-
-Vue.use(Vuetify)
 
 Vue.config.productionTip = false
 
@@ -21,6 +18,9 @@ var firebaseConfig = {
 };
 
 firebase.initializeApp(firebaseConfig)
+
+//Event bus
+export const eventBus = new Vue()
 
 new Vue({
   router,

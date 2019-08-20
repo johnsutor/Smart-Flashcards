@@ -1,5 +1,22 @@
 <template>
   <div>
-    <h1>This is the page to select from different subjects</h1>
+    <h1>Subjects</h1>
+    <Subject v-for="subject in subjectList" v-bind:key="subject" v-bind:subjectName="subject" ></Subject>
   </div>
 </template>
+
+<script>
+import Subject from '@/components/Subject.vue'
+
+export default {
+  name: 'Subjects',
+  components: {
+    Subject
+  },
+  data() {
+    return {
+      subjectList: ['AP US History', 'AP World History', 'AP Biology']
+    }
+  }
+}
+</script>

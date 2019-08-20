@@ -1,5 +1,6 @@
 <template>
   <div v-bind:class="flipped ? 'flip-container flipped': 'flip-container'">
+    <h1>{{subject}}</h1>
     <div class="flipper">
       <div class="front">
         <slot name="front"></slot>
@@ -34,23 +35,25 @@
 export default {
   name: 'FlashCard',
   props: {
-    flipped: Boolean,
     cardID: String,
     question: String,
     solution: String,
     userSolution: String,
+    subject: String,
+  },
+  data() {
+    return {
+      flipped: false,
+    }
   },
   methods: {
-    setSubject(str) {
-      this.subject = str;
-    },  
     checkSolution() {
       if (this.userSolution == this.solution) {
           this.flipped = !this.flipped;
       } else {
           alert("wrong answer niga");
       }
-    }
+    },
   }
 };
 </script>
@@ -99,15 +102,12 @@ i.backFlipBtn {
   -ms-transform-style: preserve-3d;
   transition: 0.6s;
   transform-style: preserve-3d;
-  height:66%;
-  width: 200px;
-  left: 50%;
-  margin-left: -100px;
+  height:100%;
+  width: 70%;
+  left: 15%;
   border-style: outset;
   border-radius: 5px;
   position: absolute;
-
-  
 }
 .back {
   -webkit-transform: rotateY(-180deg);
