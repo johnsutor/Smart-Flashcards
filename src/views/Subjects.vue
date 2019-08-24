@@ -1,7 +1,9 @@
 <template>
   <div>
     <h1>Subjects</h1>
-    <Subject v-for="subject in subjectList" v-bind:key="subject" v-bind:subjectName="subject" ></Subject>
+    <div class="flex flex-row w-full">
+      <Subject v-for="subject in subjectList" :key="subject" :subjectName="subject"></Subject>
+    </div>
   </div>
 </template>
 

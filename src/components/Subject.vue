@@ -1,8 +1,9 @@
 <template>
-  <div> 
-    {{subjectName}} 
+  <div class="subject bg-white shadow mx-2 p-2 rounded text-left w-full md:w-1/2 lg:w-1/3 lg:bg-black hover:shadow-md">
     <router-link :to=subjectPath>
-    <button class="select" @click="updateFlashcards">select</button>
+      <span class="text-2xl">
+        {{subjectName}}   
+      </span>
     </router-link>
   </div>
 </template>
