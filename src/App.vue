@@ -1,12 +1,20 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <h2><router-link to="/" id=logo>Smart FlashCards </router-link>    </h2>
-      <router-link to="/subjects">Subjects</router-link> 
-      <router-link to="/flashcards/select-subject">Problems</router-link> 
-      <router-link to="/account">Account</router-link>
+    <div class="flex items-center justify-between flex-wrap bg-blue-300 shadow p-6">
+      <div class="flex items-center flex-shrink-0 mr-6">
+        <router-link to="/" class="font-semibold text-xl tracking-tight">Smart Flashcards</router-link>
+      </div>
+      <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
+        <div class="text-sm lg:flex-grow">
+          <router-link to="/subjects">Subjects</router-link> 
+          <router-link to="/flashcards/selectsubject">Problems</router-link> 
+        </div>
+        <div>
+          <router-link to="/account">Account</router-link>
+        </div>
+      </div>
     </div>
-    <router-view/>
+    <router-view></router-view>
   </div>
 </template>
 
@@ -18,12 +26,7 @@
   text-align: center;
   color: #2c3e50;
   margin:0;
-}
-#nav a {
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: darkgreen;
+  background-color: lightgray;
+  padding:0;
 }
 </style>

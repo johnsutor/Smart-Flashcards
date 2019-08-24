@@ -1,12 +1,11 @@
 <template>
   <div>
-    <div v-if="currentSubject != 'select-subject'">
-      <h3>{{$route.params.subject}}</h3>
-      <FlashCard question="question" solution="this is the solution" ></FlashCard>
+    <div v-if="currentSubject != 'selectsubject'">
+      <FlashCard :question=question :solution=solution :subject=currentSubject :choices=choices :correctIndex=correctIndex ></FlashCard>
     </div>
     <div v-else>
       Select a subject from here:
-      <button @click="$router.push('subjects')">>>></button>
+      <button @click="$router.push('/subjects')">>>></button>
     </div>
   </div>
 </template>
@@ -23,6 +22,11 @@ export default {
   data() {
     return {
       currentSubject: this.$route.params.subject,
+      question: "How many licks does it take to get to the center of a tootsie roll",
+      solution: "1000 is the correct answer",
+      choices: ["80", "10", "Infinite", "1000"],
+      correctIndex: 3,
+      correctMessage: "Your choice is correct because "
     }
   },
   created() {
