@@ -5,7 +5,7 @@
       {{subjectName}} 
     </div>
     <router-link class ="flex" :to=subjectPath>
-      <button class="select" @click="updateFlashcards">
+      <button class="bg-blue-500 p-2 text-white" @click="updateFlashcards">
         Study
       </button>
     </router-link>
@@ -34,8 +34,3 @@ export default {
 }
 </script>
 
-<style type='text/css' scoped>
-.select {
-  background-color: gray;
-}
-</style>

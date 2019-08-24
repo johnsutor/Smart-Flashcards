@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="flex flex-col items-center">
     <h1>Subjects</h1>
     <Subject class="flex justify-center" v-for="subject in subjectList" v-bind:key="subject" v-bind:subjectName="subject" ></Subject>
   </div>

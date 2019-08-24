@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div v-if="currentSubject != 'selectsubject'">
+  <div class="items-center">
+    <div v-if="currentSubject != 'selectsubject'" >
       <FlashCard :question=question :solution=solution :subject=currentSubject :choices=choices :correctIndex=correctIndex ></FlashCard>
     </div>
     <div v-else>

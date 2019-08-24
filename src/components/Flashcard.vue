@@ -2,7 +2,7 @@
   <div v-bind:class="flipped ? 'flip-container flipped': 'flip-container'">
     <h1>{{subject}}</h1>
     <div class="flipper">
-      <div class="front flex w-1/3 bg-gray-200 rounded m-2 h-64 shadow-md flex-col">
+      <div class="front flex bg-gray-200 rounded m-2 h-64 w-1/2 shadow-md flex-col">
         <slot name="front"></slot>
         <!--<v-icon class="frontFlipBtn" 
             v-on:click="flipped=true">
@@ -18,7 +18,7 @@
           <button class="text-left" v-on:click="checkSolution(3)">D. {{choices[3]}}</button>
         </div>
       </div>
-      <div class="back flex w-1/3 bg-gray-200 rounded m-2 h-64 shadow-md flex-col">
+      <div class="back flex bg-gray-200 rounded m-2 h-64 w-1/2 shadow-md flex-col">
         <slot name="back"></slot>
         <v-icon class="backFlipBtn" 
             v-on:click="flipped=false">
