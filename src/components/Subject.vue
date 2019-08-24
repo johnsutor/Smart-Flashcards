@@ -1,9 +1,13 @@
 <template>
-  <div class="subject bg-white shadow mx-2 p-2 rounded text-left w-full md:w-1/2 lg:w-1/3 lg:bg-black hover:shadow-md">
-    <router-link :to=subjectPath>
-      <span class="text-2xl">
-        {{subjectName}}   
-      </span>
+  <div class= "flex w-1/3 bg-gray-200 rounded m-2 h-64 shadow-md flex-col justify-center">
+    <img src="https://debrabell.com/wp-content/uploads/2016/01/AP-US-History.jpg" class="object-contain h-40 w-full">  
+    <div class="flex">
+      {{subjectName}} 
+    </div>
+    <router-link class ="flex" :to=subjectPath>
+      <button class="bg-blue-500 p-2 text-white" @click="updateFlashcards">
+        Study
+      </button>
     </router-link>
   </div>
 </template>
@@ -15,6 +19,7 @@ export default {
   name: 'Subject',
   props: {
     subjectName: String,
+    numCards: Number,
   },
   data() {
     return {
@@ -24,14 +29,8 @@ export default {
   methods: {
     updateFlashcards() {
       eventBus.$emit('selectedSubject', this.subjectName);
-
     }
   }
 }
 </script>
 
-<style type='text/css' scoped>
-.select {
-  background-color: gray;
-}
-</style>
