@@ -13,15 +13,12 @@ export default {
 
   methods: {
     googleLogin() {
-      alert('Google sign in');
-      /*
-      const provider = new firebase.auth.GoogleAuthProvider();
-      firebase.aut().signInWithPopup(provider).then((result) => {
-        this.$router.replace('home');
-      }).catch((err) => {
-        alert('Oops. ' + err.message)
-      });
-      */
+      this.$store.dispatch('ProviderSignIn', {provider: 'Google'})
+      .then(() => {
+        this.$router.push({name: 'dashboard'})
+      }).catch( err => {
+        console.log(err)
+      })
     }
   }
 }
