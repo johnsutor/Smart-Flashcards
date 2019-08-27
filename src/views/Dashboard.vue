@@ -9,6 +9,8 @@
 </template>
 
 <script>
+import firebase from 'firebase'
+
 export default {
   name: 'PageDashboard',
   data() {
@@ -19,7 +21,6 @@ export default {
   },
   created() {
     // Fetch subjects from the user's subscriptions
-    
     for(let i = 0; i < this.$store.getters.GetCurrentUserProfile.subjects.length; i++) {
       firebase.firestore().collection('subjects').doc(this.$store.getters.GetCurrentUserProfile.subjects[i]).get()
       .then( subject => {
@@ -36,7 +37,7 @@ export default {
     }) 
   },
   components: {
-    Subject = () => import('../components/Subject')
+    Subject: () => import('../components/Subject')
   }
 }
 </script>

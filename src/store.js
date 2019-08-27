@@ -1,10 +1,13 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import firebase from 'firebase'
+import createPersistedState from 'vuex-persistedstate'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
+  // Persists the state through reloads
+  plugins: [createPersistedState()],
   state: {
     // Stores basic info about the authenticated user
     current_user: {},
@@ -48,7 +51,32 @@ export default new Vuex.Store({
         firebase.auth().signInWithPopup(provider)
         .then( res => {
           commit('SetCurrentUser', {current_user: res.user})
-          resolve()
+          firebase.firestore().collection('users').doc(res.user.uid).get()
+          .then( user_res => {
+            console.log('user exists: ' + user_res.exists)
+            // Check if the user exists
+            if (user_res.exists) {
+              commit('SetCurrentUserProfile', {current_user_profile: user_res.data()})
+              resolve()
+            }
+
+            else {
+              firebase.firestore().collection('users').doc(res.user.uid).set({
+                email: res.user.email,
+                username: res.user.displayName,
+                subjects: [],
+              }).then(() => {
+                commit('SetCurrentUserProfile', {
+                  email: res.user.email,
+                  username: res.user.displayName,
+                  subjects: [],
+                })
+                resolve()
+              }).catch(err => {
+                console.log(err)
+              })
+            }
+          })
         }).catch( err => {
           reject(err)
         })

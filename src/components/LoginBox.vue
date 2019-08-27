@@ -1,7 +1,7 @@
 <template>
   <div>
     <h3>Sign in with Google</h3>
-    <button @click="googleLogin">Google Logo here</button>
+    <button class="bg-red-700" @click="googleLogin">Google Logo here</button>
   </div>
 </template>
 

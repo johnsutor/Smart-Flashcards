@@ -31,6 +31,11 @@ export default new Router({
       name: 'subjects',
       component: () => import('./views/Subjects.vue')
     },
+    {
+      path: '/dashboard',
+      name: 'dashboard',
+      component: () => import('./views/Dashboard')
+    }
 
   ]
 })
