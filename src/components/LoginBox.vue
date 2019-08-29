@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <h3>Sign in with Google</h3>
+  <div class=" container debug bg-gray-200 w-1/3 justify-center">
+    <h3 class="">Sign in with Google</h3>
     <button @click="googleLogin">Google Logo here</button>
   </div>
 </template>
@@ -42,5 +42,11 @@ li {
 }
 a {
   color: #42b983;
+}
+.debug {
+  outline: 1px solid red;
+}
+.debug > * {
+  outline: 1px solid blue;
 }
 </style>

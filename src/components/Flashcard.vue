@@ -55,7 +55,7 @@ export default {
           alert("correct");
           this.flipped = !this.flipped;
       } else {
-          alert("wrong answer niga");
+          alert("wrong answer");
       }
     },
   }
