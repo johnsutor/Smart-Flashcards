@@ -1,14 +1,19 @@
 <template>
-  <div class= "flex w-1/3 bg-gray-200 rounded m-2 h-64 shadow-md flex-col justify-center">
-    <img src="https://debrabell.com/wp-content/uploads/2016/01/AP-US-History.jpg" class="object-contain h-40 w-full">  
-    <div class="flex">
-      {{subjectName}} 
+  <div class= "flex flex-initial w-1/3 bg-gray-200 rounded m-2 h-64 shadow-md flex-col justify-center relative">
+    <img src="https://debrabell.com/wp-content/uploads/2016/01/AP-US-History.jpg" class="object-contain top-0 h-40 py-0 my-0">  
+    <div class="">
+      {{subjectName}} - {{numCards}} cards
     </div>
-    <router-link class ="flex" :to=subjectPath>
-      <button class="bg-blue-500 p-2 text-white" @click="updateFlashcards">
-        Study
+    <div>
+      <router-link :to=subjectPath>
+        <button class="bg-blue-500 px-2 py-1 text-white rounded shadow-md bottom-0" @click="updateFlashcards">
+          Study
+        </button>
+      </router-link>
+      <button class="ml-2 bg-gray-500 px-2 py-1 text-white rounded shadow-md bottom-0" @click="updateFlashcards">
+        Subscribe
       </button>
-    </router-link>
+    </div>
   </div>
 </template>
 
@@ -33,4 +38,3 @@ export default {
   }
 }
 </script>
-
