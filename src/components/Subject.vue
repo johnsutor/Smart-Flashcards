@@ -18,7 +18,6 @@
 </template>
 
 <script>
-import {eventBus} from "../main";
 
 export default {
   name: 'Subject',
@@ -33,7 +32,7 @@ export default {
   },
   methods: {
     updateFlashcards() {
-      eventBus.$emit('selectedSubject', this.subjectName);
+      this.$emit('selectedSubject', this.subjectName);
     }
   }
 }

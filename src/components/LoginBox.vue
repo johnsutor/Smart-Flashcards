@@ -1,7 +1,13 @@
 <template>
+<<<<<<< HEAD
   <div class=" container debug bg-gray-200 w-1/3 justify-center">
     <h3 class="">Sign in with Google</h3>
     <button @click="googleLogin">Google Logo here</button>
+=======
+  <div>
+    <h3>Sign in with Google</h3>
+    <button class="bg-red-700" @click="googleLogin">Google Logo here</button>
+>>>>>>> 0bba4e66971ac50a36ee013322e53eb2b96f860f
   </div>
 </template>
 
@@ -13,15 +19,12 @@ export default {
 
   methods: {
     googleLogin() {
-      alert('Google sign in');
-      /*
-      const provider = new firebase.auth.GoogleAuthProvider();
-      firebase.aut().signInWithPopup(provider).then((result) => {
-        this.$router.replace('home');
-      }).catch((err) => {
-        alert('Oops. ' + err.message)
-      });
-      */
+      this.$store.dispatch('ProviderSignIn', {provider: 'Google'})
+      .then(() => {
+        this.$router.push({name: 'dashboard'})
+      }).catch( err => {
+        console.log(err)
+      })
     }
   }
 }
