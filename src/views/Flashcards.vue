@@ -23,7 +23,9 @@ export default {
     return {
       action: 0,
       cards: [],
+      correct: false,
       chosen_actions: [],
+      step: 0,
 
       currentSubject: this.$route.params.subject,
       question: "How many licks does it take to get to the center of a tootsie roll",
@@ -70,6 +72,7 @@ export default {
           this.user_subject_data.arm_count = res.arm_count
           this.action = res.action
           this.chosen_actions = res.chosen_actions
+          this.step += 1
         })
       }
     })
@@ -77,7 +80,24 @@ export default {
   methods: {
     // Continues the learning process
     stepBanditLearning() {
-
+      // Ensure the learning process has not terminated
+      if(!(this.step > 10)) {
+        axios.post(process.env.VUE_APP_STEP_LEARNING_URL, {
+          chosen_actions: this.chosen_actions,
+          arm_count: this.user_subject_data.arm_count,
+          previous_action: this.action,
+          num_cards: this.cards.num_cards,
+          q_table: this.user_subject_data.q_table,
+          correct: this.correct,
+          num_steps: 10,
+        }).then( res => {
+          this.user_subject_data.q_table = res.q_table
+          this.user_subject_data.arm_count = res.arm_count
+          this.action = res.action
+          this.chosen_actions = res.chosen_actions
+          this.step += 1
+        })
+      }
     }
   }
 }
