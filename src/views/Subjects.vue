@@ -1,19 +1,12 @@
 <template>
-<<<<<<< HEAD
-  <div class="debug ">
-    <h1>My Subjects</h1>
-    <div class="flex flex-wrap justify-center">
+  <div class="flex flex-col w-full">
+    <h1 class="ml-2">My Subjects</h1>
+    <div class="flex flex-wrap ">
       <Subject v-for="subject in subjectList" v-bind:key="subject" v-bind:subjectName="subject" :numCards=0 ></Subject>
     </div>
-    <h1>Explore Subjects</h1>
-    <div class="flex flex-wrap justify-center ">
+    <h1 class="ml-2">Explore Subjects</h1>
+    <div class="flex flex-wrap">
       <Subject v-for="subject in subjectList" v-bind:key="subject" v-bind:subjectName="subject" :numCards=0 ></Subject>
-=======
-  <div class="flex flex-col items-center">
-    <h1>Subjects</h1>
-    <div class="flex flex-row w-full">
-      <Subject v-for="subject in subjectList" :key="subject" :subjectName="subject"></Subject>
->>>>>>> 0bba4e66971ac50a36ee013322e53eb2b96f860f
     </div>
   </div>
 </template>
@@ -28,17 +21,8 @@ export default {
   },
   data() {
     return {
-      subjectList: ['AP US History', 'AP World History', 'AP Biology']
+      subjectList: ['AP US History', 'AP World History', 'AP Biology','Another one', 'Another one']
     }
   }
 }
 </script>
-
-<style scoped>
-.debug {
-  outline: 1px solid red;
-}
-.debug > * {
-  outline: 1px solid blue;
-}
-</style>

@@ -1,12 +1,10 @@
 <template>
-  <div class="items-center">
-    <div v-if="currentSubject != 'selectsubject'" class="items-center">
-      <FlashCard :question=question :solution=solution :subject=currentSubject :choices=choices :correctIndex=correctIndex ></FlashCard>
-    </div>
-    <div v-else>
-      Select a subject from here:
-      <button @click="$router.push('/subjects')">>>></button>
-    </div>
+  <div v-if="currentSubject != 'selectsubject'" class="flex w-full flex-col items-center">
+    <FlashCard :question=question :solution=solution :subject=currentSubject :choices=choices :correctIndex=correctIndex ></FlashCard>
+  </div>
+  <div v-else>
+    Select a subject from here:
+    <button @click="$router.push('/subjects')">>>></button>
   </div>
 </template>
 
@@ -46,3 +44,4 @@ export default {
   */
 }
 </script>
+

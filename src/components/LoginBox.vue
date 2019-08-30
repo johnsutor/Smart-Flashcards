@@ -1,13 +1,7 @@
 <template>
-<<<<<<< HEAD
-  <div class=" container debug bg-gray-200 w-1/3 justify-center">
-    <h3 class="">Sign in with Google</h3>
-    <button @click="googleLogin">Google Logo here</button>
-=======
   <div>
     <h3>Sign in with Google</h3>
     <button class="bg-red-700" @click="googleLogin">Google Logo here</button>
->>>>>>> 0bba4e66971ac50a36ee013322e53eb2b96f860f
   </div>
 </template>
 
@@ -34,22 +28,5 @@ export default {
 <style scoped>
 h3 {
   margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
-.debug {
-  outline: 1px solid red;
-}
-.debug > * {
-  outline: 1px solid blue;
 }
 </style>

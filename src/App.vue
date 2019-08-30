@@ -1,30 +1,26 @@
 <template>
   <div id="app">
-    <nav class="flex bg-blue-300 shadow-md p-6">
-      <router-link to="/" class="font-semibold text-xl tracking-tight">Smart Flashcards</router-link>
-      <div class="text-sm">
-        <router-link to="/flashcards/selectsubject">Problems</router-link> 
+    <nav class="flex items-center justify-between flex-wrap bg-blue-300 shadow-md p-6">
+      <div>
+        <router-link to="/" class="font-semibold text-xl tracking-tight items-center mr-6">Smart Flashcards</router-link>
       </div>
-<<<<<<< HEAD
-      <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
-        <div class="text-justify text-sm lg:flex-grow">
-          <router-link class="mr-6" to="/subjects">Subjects</router-link> 
+      <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto">
+        <div class="text-sm mr-6 hover:text-white active:text-white">
           <router-link to="/flashcards/selectsubject">Problems</router-link> 
         </div>
-        <div>
-          <router-link class= "text-sm" to="/account">Account</router-link>
+        <div class="text-sm mr-6 hover:text-white active:text-white">
+          <router-link to="/subjects">Subjects</router-link> 
         </div>
-=======
-      <div class="text-sm">
-        <router-link to="/subjects">Subjects</router-link> 
->>>>>>> 0bba4e66971ac50a36ee013322e53eb2b96f860f
       </div>
-      <div>
-        <router-link class="pt-24" to="/account">Account</router-link>
+      <div class="text-sm align-right hover:text-white active:text-white">
+          <router-link to="/account">Account</router-link>
       </div>
     </nav>
-    <div class="content pt-20 px-4 w-full">
+    <div class="flex content py-10 px-4 w-full">
       <router-view></router-view>
+    </div>
+    <div class="w-full bg-blue-300 py-20">
+      Footer here
     </div>
   </div>
 </template>
@@ -35,14 +31,8 @@
   font-family: 'Lato', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-<<<<<<< HEAD
-  align-content: center;
-  text-align: center;
-  color: #2c3e50;
-=======
->>>>>>> 0bba4e66971ac50a36ee013322e53eb2b96f860f
   margin:0;
-  background-color: lightgray;
+  background-color: white;
   padding:0;
 }
 </style>
