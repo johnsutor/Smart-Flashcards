@@ -1,6 +1,6 @@
 <template>
-  <div class="home">
-    <h2>What we do: </h2>
+  <div class="flex flex-col w-full items-center">
+    <h2>Smart flashcards: Flashcards that utilize reinforcement learning to optimize the studying experience </h2>
     <LoginBox></LoginBox>
   </div>
 </template>
