@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col w-full items-center">
+  <div class="flex flex-col w-full items-center ">
     <h2>Smart flashcards: Flashcards that utilize reinforcement learning to optimize the studying experience </h2>
     <LoginBox></LoginBox>
   </div>

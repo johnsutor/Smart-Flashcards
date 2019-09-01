@@ -1,5 +1,5 @@
 <template>
-    <div class="flex sm:w-5/6 lg:w-1/3 md:w-1/2 bg-white rounded m-2 h-64 shadow-md flex-col relative p-1">
+    <div class="flex w-5/6 md:w-1/2 lg:w-1/3 bg-white rounded m-2 h-64 shadow-md flex-col relative p-1">
       <h1 class="text-bold">{{subject}}</h1>
       <!-- Front with question -->
       <div v-if="!flipped" class="">

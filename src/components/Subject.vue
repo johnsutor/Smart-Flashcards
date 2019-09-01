@@ -1,16 +1,16 @@
 <template>
-  <div class= "debug flex flex-initial w-2/5 lg:w-64 bg-white rounded m-2 h-64 shadow-md flex-col justify-center relative">
+  <div class= "flex flex-initial w-2/5 lg:w-64 bg-white rounded m-2 h-64 shadow-md flex-col justify-center relative">
     <img src="https://debrabell.com/wp-content/uploads/2016/01/AP-US-History.jpg" class="object-contain top-0 h-40 py-0 my-0">  
     <div class="ml-1">
       {{subjectName}} - {{numCards}} cards
     </div>
-    <div class="debug">
+    <div class="">
       <router-link :to=subjectPath>
-        <button class="bg-blue-500 ml-1 px-2 py-1 text-white rounded shadow-md bottom-0" @click="updateFlashcards">
+        <button class="bg-blue-500 ml-1 px-2 py-1 text-white rounded shadow-md bottom-0">
           Study
         </button>
       </router-link>
-      <button class="ml-2 bg-gray-500 px-2 py-1 text-white rounded shadow-md bottom-0" @click="updateFlashcards">
+      <button class="ml-2 bg-gray-500 px-2 py-1 text-white rounded shadow-md bottom-0" @click="subscribe">
         Subscribe
       </button>
     </div>
@@ -27,12 +27,16 @@ export default {
   },
   data() {
     return {
-      subjectPath: "flashcards/" + this.subjectName
+      subjectPath: "flashcards/"+this.subjectName.replace(/ /g, ''),
+
     }
   },
   methods: {
     updateFlashcards() {
-      this.$emit('selectedSubject', this.subjectName);
+      
+    },
+    subscribe() {
+
     }
   }
 }

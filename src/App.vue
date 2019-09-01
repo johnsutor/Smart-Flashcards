@@ -13,7 +13,7 @@
         </div>
       </div>
       <div class="text-sm align-right hover:text-white">
-          <router-link active-class="text-gray-200" to="/account">Account</router-link>
+          <button>Account</button>
       </div>
     </nav>
     <div class="flex content py-10 px-4 w-full">

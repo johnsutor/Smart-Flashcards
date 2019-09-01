@@ -49,7 +49,7 @@ export default {
 
     },
     toggleSignIn() {
-      this.signUp = !this.signUp
+      this.signUpFlag = !this.signUpFlag
     },
     signIn() {
 
