@@ -31,21 +31,13 @@ export default {
       user_subject_data: {},
 
       currentSubject: this.$route.params.subject,
-      question: "How many licks does it take to get to the center of a tootsie roll",
-      solution: "1000 is the correct answer",
-      choices: ["80", "10", "Infinite", "1000"],
-      correctIndex: 3,
-      correctMessage: "Your choice is correct because ",
-      q_table: [],
     }
   },
   beforeCreate() {
     // Fetch the user's q-table for the given subject
-    this.user_subject_data = this.$store.getters.GetCurrentUserProfile.subjects.find( subject => {
-      return subject.subject == this.$route.params.subject
-    })
+    this.user_subject_data = this.$store.getters.GetCurrentUserProfile.subjects[this.$route.params.subject]
 
-    if(this.user_subject_data == undefined) {
+    if(this.user_subject_data === null || this.user_subject_data === undefined) {
       this.user_subject_data = {
         arm_count: [],
         q_table: [],
@@ -68,6 +60,13 @@ export default {
           this.action = res.data.action
           this.chosen_actions = res.data.chosen_actions
           this.selected_card = this.cards_data.cards[0]
+          
+          // Update the user's subject data
+          this.$store.dispatch('UpdateUserSubjectData', {
+            subject: this.$route.params.subject,
+            q_table: this.user_subject_data.q_table,
+            arm_count: this.user_subject_data.arm_count
+          })
         })
       }
 
@@ -85,6 +84,13 @@ export default {
           this.chosen_actions = res.data.chosen_actions
           this.step += 1
           this.selected_card = this.cards_data.cards[0]
+          
+          // Update the user's subject data
+          this.$store.dispatch('UpdateUserSubjectData', {
+            subject: this.$route.params.subject,
+            q_table: this.user_subject_data.q_table,
+            arm_count: this.user_subject_data.arm_count
+          })
         })
       }
     })
@@ -108,6 +114,13 @@ export default {
           this.action = res.data.action
           this.chosen_actions = res.data.chosen_actions
           this.step += 1
+          
+          // Update the user's subject data
+          this.$store.dispatch('UpdateUserSubjectData', {
+            subject: this.$route.params.subject,
+            q_table: this.user_subject_data.q_table,
+            arm_count: this.user_subject_data.arm_count
+          })
         })
       }
     }

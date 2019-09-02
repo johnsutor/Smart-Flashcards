@@ -21,7 +21,7 @@ export default {
   },
   data() {
     return {
-      subjectList: ['AP US History', 'AP World History', 'AP Biology','Another one', 'Another one']
+      subjectList: ['AP US History', 'AP World History', 'AP Biology','Another one']
     }
   }
 }

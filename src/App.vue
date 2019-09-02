@@ -13,7 +13,7 @@
         </div>
       </div>
       <div class="text-sm align-right hover:text-white">
-          <button>Account</button>
+          <button @click="$store.dispatch('SignOut')">Sign Out</button>
       </div>
     </nav>
     <div class="flex content py-10 px-4 w-full">
