@@ -4,23 +4,21 @@
       <!-- Front with question -->
       <div v-if="!flipped" class="">
         <div class="text-left">
-            {{question}}
+            {{card_data.question}}
         </div>
         <div class="flex flex-col"> 
-          <button class="text-left" v-on:click="checkSolution(0)">A. {{choices[0]}}</button>
-          <button class="text-left" v-on:click="checkSolution(1)">B. {{choices[1]}}</button>
-          <button class="text-left" v-on:click="checkSolution(2)">C. {{choices[2]}}</button>
-          <button class="text-left" v-on:click="checkSolution(3)">D. {{choices[3]}}</button>
+          <button v-for="(choice, index) in card_data.choices" :key="index" @click="checkSolution(index)">
+            {{ question_prefix[index] + choice }}
+          </button>
         </div>
       </div>
       <!-- Back with solution -->
       <div v-else class="">
-        <v-icon class="" 
-            v-on:click="flipped=false">
-            See question again
-        </v-icon>
+        <span @click="flipped = !flipped">
+          See question again
+        </span>
         <div>
-            {{solution}}
+          {{card_data.solution}}
         </div>
       </div>
     </div>
@@ -30,22 +28,22 @@
 export default {
   name: 'FlashCard',
   props: {
+    card_data: Object,
     cardID: String,
-    question: String,
-    solution: String,
-    userSolution: String,
     subject: String,
-    choices: Array,
-    correctIndex: Number
   },
   data() {
     return {
+      question_prefix: ['A. ', 'B. ', 'C. ', 'D. '],
       flipped: false,
     }
   },
+  created() {
+    console.log(this.card_data)
+  },
   methods: {
-    checkSolution(chosenIndex) {
-      if (chosenIndex == this.correctIndex) {
+    checkSolution(index) {
+      if(this.card_data.choices[index] == this.card_data.solution) {
           alert("correct");
           this.flipped = !this.flipped;
       } else {
