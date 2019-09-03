@@ -1,7 +1,7 @@
 <template>
   <div class="items-center">
     <div v-if="currentSubject != 'selectsubject'">
-      <FlashCard v-if="selected_card" :card_data="selected_card"></FlashCard>
+      <FlashCard v-if="selected_card" :card_data="selected_card" @StepLearning="StepBanditLearning($event)"></FlashCard>
     </div>
     <div v-else>
       Select a subject from here:
@@ -23,7 +23,6 @@ export default {
     return {
       action: 0,
       cards_data: {},
-      correct: false,
       chosen_actions: [],
       step: 0,
       selected_card: null,
@@ -59,7 +58,7 @@ export default {
           this.user_subject_data.arm_count = res.data.arm_count
           this.action = res.data.action
           this.chosen_actions = res.data.chosen_actions
-          this.selected_card = this.cards_data.cards[0]
+          this.selected_card = this.cards_data.cards[this.action]
           
           // Update the user's subject data
           this.$store.dispatch('UpdateUserSubjectData', {
@@ -78,12 +77,13 @@ export default {
           q_table: this.user_subject_data.q_table,
           arm_count: this.user_subject_data.arm_count,
         }).then( res => {
+          console.log(res)
           this.user_subject_data.q_table = res.data.q_table
           this.user_subject_data.arm_count = res.data.arm_count
           this.action = res.data.action
           this.chosen_actions = res.data.chosen_actions
           this.step += 1
-          this.selected_card = this.cards_data.cards[0]
+          this.selected_card = this.cards_data.cards[this.action]
           
           // Update the user's subject data
           this.$store.dispatch('UpdateUserSubjectData', {
@@ -97,18 +97,22 @@ export default {
   },
   methods: {
     // Continues the learning process
-    stepBanditLearning() {
+    StepBanditLearning(e) {
+      let step_data = {
+        chosen_actions: this.chosen_actions,
+        arm_count: this.user_subject_data.arm_count,
+        previous_action: this.action,
+        num_cards: this.cards_data.num_cards,
+        q_table: this.user_subject_data.q_table,
+        correct: e.correct,
+        num_steps: 10,
+      }
       // Ensure the learning process has not terminated
+      console.log(step_data)
+
       if(!(this.step > 10)) {
-        axios.post(process.env.VUE_APP_STEP_LEARNING_URL, {
-          chosen_actions: this.chosen_actions,
-          arm_count: this.user_subject_data.arm_count,
-          previous_action: this.action,
-          num_cards: this.cards_data.num_cards,
-          q_table: this.user_subject_data.q_table,
-          correct: this.correct,
-          num_steps: 10,
-        }).then( res => {
+        axios.post(process.env.VUE_APP_STEP_LEARNING_URL, step_data).then( res => {
+          console.log(res.data)
           this.user_subject_data.q_table = res.data.q_table
           this.user_subject_data.arm_count = res.data.arm_count
           this.action = res.data.action
@@ -122,6 +126,11 @@ export default {
             arm_count: this.user_subject_data.arm_count
           })
         })
+      }
+
+      else {
+        alert("You've completed your study session!")
+        this.$router.push('/dashboard')
       }
     }
   }
