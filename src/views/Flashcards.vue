@@ -77,7 +77,6 @@ export default {
           q_table: this.user_subject_data.q_table,
           arm_count: this.user_subject_data.arm_count,
         }).then( res => {
-          console.log(res)
           this.user_subject_data.q_table = res.data.q_table
           this.user_subject_data.arm_count = res.data.arm_count
           this.action = res.data.action
@@ -107,17 +106,15 @@ export default {
         correct: e.correct,
         num_steps: 10,
       }
-      // Ensure the learning process has not terminated
-      console.log(step_data)
 
       if(!(this.step > 10)) {
         axios.post(process.env.VUE_APP_STEP_LEARNING_URL, step_data).then( res => {
-          console.log(res.data)
           this.user_subject_data.q_table = res.data.q_table
           this.user_subject_data.arm_count = res.data.arm_count
           this.action = res.data.action
           this.chosen_actions = res.data.chosen_actions
           this.step += 1
+          this.selected_card = this.cards_data.cards[this.action]
           
           // Update the user's subject data
           this.$store.dispatch('UpdateUserSubjectData', {
