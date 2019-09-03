@@ -1,21 +1,6 @@
 <template>
   <div id="app">
-    <nav class="flex items-center justify-between flex-wrap bg-blue-300 shadow-md p-2 lg:p-6">
-      <div>
-        <router-link to="/" class="font-semibold text-xl tracking-tight items-center mr-6">Smart Flashcards</router-link>
-      </div>
-      <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto h-full">
-        <div class="text-sm mr-6 hover:text-white h-full">
-          <router-link active-class="text-gray-200" to="/flashcards">Problems</router-link> 
-        </div>
-        <div class="text-sm mr-6 hover:text-white">
-          <router-link active-class="text-gray-200" to="/subjects">Subjects</router-link> 
-        </div>
-      </div>
-      <div class="text-sm align-right hover:text-white">
-          <button>Account</button>
-      </div>
-    </nav>
+    <NavBar></NavBar>
     <div class="flex content py-10 px-4 w-full">
       <router-view></router-view>
     </div>
@@ -25,6 +10,16 @@
   </div>
 </template>
 
+<script>
+import NavBar from '@/components/NavBar.vue'
+
+export default {
+  name: 'App',
+  components: {
+    NavBar
+  },
+}
+</script>
 <style>
 @import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
 #app {

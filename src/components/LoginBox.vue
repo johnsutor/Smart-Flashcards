@@ -10,9 +10,6 @@
     <div v-else class="w-5/6">
       <button class="border border-green-400 rounded text-green-400 py-1 hover:bg-gray-200 w-full" @click="signUp">Sign Up</button>
     </div>
-    <div class="text-center"> OR:</div>
-    <button class="bg-red-700 mb-2 rounded w-5/6 py-1" @click="googleLogin">Google</button>
-    <button class="bg-blue-700 rounded w-5/6 py-1" @click="facebookLogin">Facebook</button>
     <div v-if="!signUpFlag">
       <div class="text-sm inline mr-1">New here?</div>
       <button class="text-sm text-green-400 inline" @click="toggleSignIn">Sign Up</button>
@@ -21,6 +18,9 @@
       <div class="text-sm inline mr-1">Already have an account?</div>
       <button class="text-sm text-green-400 inline" @click="toggleSignIn">Sign In</button>
     </div>
+    <div class="text-center"> OR:</div>
+    <button class="bg-red-700 mb-2 rounded w-5/6 py-1" @click="googleLogin">Google</button>
+    <button class="bg-blue-700 rounded w-5/6 py-1" @click="facebookLogin">Facebook</button>
   </div>
 </template>
 
@@ -46,7 +46,12 @@ export default {
       })
     },
     facebookLogin() {
-
+      this.$store.dispatch('ProviderSignIn', {provider: 'Facebook'})
+      .then(() => {
+        this.$router.push({name: 'dashboard'})
+      }).catch( err => {
+        console.log(err)
+      })
     },
     toggleSignIn() {
       this.signUpFlag = !this.signUpFlag

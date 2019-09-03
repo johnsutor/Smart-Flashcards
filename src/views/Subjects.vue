@@ -2,11 +2,11 @@
   <div class="flex flex-col w-full">
     <h1 class="ml-2">My Subjects</h1>
     <div class="flex flex-wrap ">
-      <Subject v-for="subject in subjectList" v-bind:key="subject" v-bind:subjectName="subject" :numCards=0 ></Subject>
+      <Subject v-for="subject in subjectList" v-bind:key="subject" v-bind:subjectName="subject" :numCards=0 :userSubscribed=true></Subject>
     </div>
-    <h1 class="ml-2">Explore Subjects</h1>
+    <h1 class="ml-2 mt-6">Explore Subjects</h1>
     <div class="flex flex-wrap">
-      <Subject v-for="subject in subjectList" v-bind:key="subject" v-bind:subjectName="subject" :numCards=0 ></Subject>
+      <Subject v-for="subject in subjectList" v-bind:key="subject" v-bind:subjectName="subject" :numCards=0 :userSubscribed=false></Subject>
     </div>
   </div>
 </template>
