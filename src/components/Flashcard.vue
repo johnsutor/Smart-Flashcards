@@ -38,9 +38,6 @@ export default {
       flipped: false,
     }
   },
-  created() {
-    console.log(this.card_data)
-  },
   methods: {
     checkSolution(index) {
       if(this.card_data.choices[index] == this.card_data.solution) {

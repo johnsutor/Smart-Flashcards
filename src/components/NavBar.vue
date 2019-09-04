@@ -12,10 +12,10 @@
       </div>
     </div>
     <div class="text-sm align-right mr-6">
-        <div class="hover:text-white cursor-pointer" @mouseover="dropdown" >Account</div>
+        <div class="hover:text-white cursor-pointer" @click="dropdown" >Account</div>
         <div class="dropdown-content text-sm shadow-md bg-white rounded py-1 px-1 align-left text-left" id="myDropdown">
           <div>Username</div>
-          <div class="text-left hover:bg-gray-400 py-1 px-1 rounded cursor-pointer" @click="signOut">Sign out</div>
+          <div class="text-left hover:bg-gray-400 py-1 px-1 rounded cursor-pointer" @click="$store.dispatch('SignOut')">Sign out</div>
         </div>
     </div>
   </nav>

@@ -30,6 +30,13 @@ export default new Vuex.Store({
 
     SetCurrentUserProfile(state, payload) {
       state.current_user_profile = payload.current_user_profile
+    },
+
+    SetCurrentUserSubjectData(state, payload) {
+      state.current_user_profile.subjects[payload.subject] = {
+        q_table: payload.q_table,
+        arm_count: payload.arm_count
+      }
     }
   },
   actions: {
@@ -53,7 +60,6 @@ export default new Vuex.Store({
           commit('SetCurrentUser', {current_user: res.user})
           firebase.firestore().collection('users').doc(res.user.uid).get()
           .then( user_res => {
-            console.log('user exists: ' + user_res.exists)
             // Check if the user exists
             if (user_res.exists) {
               commit('SetCurrentUserProfile', {current_user_profile: user_res.data()})
@@ -64,16 +70,16 @@ export default new Vuex.Store({
               firebase.firestore().collection('users').doc(res.user.uid).set({
                 email: res.user.email,
                 username: res.user.displayName,
-                subjects: [],
+                subjects: {},
               }).then(() => {
                 commit('SetCurrentUserProfile', {
                   email: res.user.email,
                   username: res.user.displayName,
-                  subjects: [],
+                  subjects: {},
                 })
                 resolve()
               }).catch(err => {
-                console.log(err)
+                reject(err)
               })
             }
           })
@@ -89,10 +95,35 @@ export default new Vuex.Store({
         .then(() => {
           commit('SetCurrentUser', {current_user: {}})
           commit('SetCurrentUserProfile', {current_user_profile: {}})
+          Vue.router.push('/')
           resolve()
         }).catch(err => {
           reject(err)
         })
+      })
+    },
+
+    UpdateUserSubjectData({ commit, state }, payload) {
+      return new Promise((resolve, reject) => {
+        // Update the user's profile to include new field data
+        firebase.firestore().collection('users').doc(state.current_user.uid).set({
+          subjects: {
+            [payload.subject]: {
+              q_table: payload.q_table,
+              arm_count: payload.arm_count
+            }
+          }
+        }, {merge: true}).then(() => {
+          commit('SetCurrentUserSubjectData', {
+            subject: payload.subject,
+            q_table: payload.q_table,
+            arm_count: payload.arm_count
+          })
+          resolve()
+        }).catch(err => {
+          reject(err)
+        })
+      
       })
     }
   }
