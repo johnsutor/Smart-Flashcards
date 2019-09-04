@@ -41,10 +41,13 @@ export default {
   methods: {
     checkSolution(index) {
       if(this.card_data.choices[index] == this.card_data.solution) {
-          alert("correct");
-          this.flipped = !this.flipped;
+        alert("correct");
+        this.flipped = !this.flipped;
+        this.$emit('StepLearning', {correct: true})
       } else {
-          alert("wrong answer");
+        alert("wrong answer");
+        this.flipped = !this.flipped;
+        this.$emit('StepLearning', {correct: false})
       }
     },
   }
