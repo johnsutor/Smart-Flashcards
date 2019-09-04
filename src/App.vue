@@ -4,9 +4,6 @@
     <div class="flex content py-10 px-4 w-full">
       <router-view></router-view>
     </div>
-    <div class="w-full bg-blue-300 py-10 lg:py-20">
-      Footer here
-    </div>
   </div>
 </template>
 

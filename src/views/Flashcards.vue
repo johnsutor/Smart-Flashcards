@@ -1,11 +1,11 @@
 <template>
   <div class="items-center">
-    <div v-if="currentSubject != 'selectsubject'">
+    <div v-if="currentSubject != 'select-subject'">
       <FlashCard v-if="selected_card" :card_data="selected_card" @StepLearning="StepBanditLearning($event)"></FlashCard>
     </div>
     <div v-else>
-      Select a subject from here:
-      <button @click="$router.push('/subjects')">>>></button>
+      Select a subject from here to start learning:
+      <button @click="$router.push('/dashboard')">>>></button>
     </div>
   </div>
 </template>

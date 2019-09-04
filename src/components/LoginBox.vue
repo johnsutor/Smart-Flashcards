@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col w-5/6 lg:w-1/3 md:w-1/2 bg-white rounded m-2 h-auto py-4 shadow-md flex-col relative justify-center items-center">
+  <div class="flex flex-col w-5/6 max-w-md lg:w-1/3 md:w-1/2 bg-white rounded m-2 h-auto py-4 shadow-md flex-col relative justify-center items-center">
     <div v-if="!signUpFlag" class="mb-2 text-left">Sign In:</div>
     <div v-else class="mb-2 text-left">Sign Up:</div>
     <input class="border shadow rounded mb-2 w-5/6 py-1" v-model="username" placeholder="Username">
