@@ -1,10 +1,15 @@
 <template>
-  <div class="dashboard">
-    <!-- User Subjects -->
-    <Subject v-for="(subject, index) in user_subjects" :key="index" :subject="subject"></Subject>
-
+<div class="flex flex-col w-full">
+   <!-- User Subjects -->
+    <h1 class="ml-2 mt-4 pb-4 text-2xl">Your Subjects</h1>
+    <div class="flex flex-wrap ">
+      <Subject v-for="(subject, index) in user_subjects" :key="index" :subject="subject"></Subject>
+    </div>
     <!-- All Subjects -->
-    <Subject v-for="(subject, index) in all_subjects" :key="index" :subject="subject"></Subject>
+    <h1 class="ml-2 mt-4 pb-4 text-2xl">Explore Subjects</h1>
+    <div class="flex flex-wrap">
+      <Subject v-for="(subject, index) in all_subjects" :key="index" :subject="subject"></Subject>
+    </div>
   </div>
 </template>
 

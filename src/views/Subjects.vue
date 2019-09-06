@@ -1,12 +1,8 @@
 <template>
   <div class="flex flex-col w-full">
-    <h1 class="ml-2">My Subjects</h1>
-    <div class="flex flex-wrap ">
-      <Subject v-for="subject in subjectList" v-bind:key="subject" v-bind:subjectName="subject" :numCards=0 :userSubscribed=true></Subject>
-    </div>
-    <h1 class="ml-2 mt-6">Explore Subjects</h1>
+    <h1 class="ml-2 mt-0 md:mt-4 mb-0 md:mb-4 text-lg md:text-2xl">Explore Subjects</h1>
     <div class="flex flex-wrap">
-      <Subject v-for="subject in subjectList" v-bind:key="subject" v-bind:subjectName="subject" :numCards=0 :userSubscribed=false></Subject>
+      <Subject v-for="subject in subjectList" v-bind:key="subject" v-bind:subjectName="subject" :numCards=0 :userSubscribed="false" :comingSoon="true"></Subject>
     </div>
   </div>
 </template>
@@ -21,7 +17,7 @@ export default {
   },
   data() {
     return {
-      subjectList: ['AP US History', 'AP World History', 'AP Biology','Another one']
+      subjectList: ['AP US History', 'AP World History', 'AP Biology','AP Gender Studies']
     }
   }
 }
