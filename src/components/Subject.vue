@@ -1,22 +1,16 @@
 <template>
-  <div class= "flex flex-initial w-2/5 md:w-64 bg-white rounded m-2 h-64 shadow-md flex-col relative">
+  <div id="subjectCard" class= "flex flex-initial w-2/5 md:w-64 bg-white rounded m-2 h-64 shadow-md flex-col relative">
     <img src="https://debrabell.com/wp-content/uploads/2016/01/AP-US-History.jpg" class="object-contain top-0 h-40 py-0 my-0">  
     <div class="ml-1 text-sm md:text-base lg:text-base md:mt-2 lg:mt-2">
       {{subjectName}} - {{numCards}} cards
     </div>
-    <router-link :to=subjectPath>
-      <button class="absolute bg-blue-500 px-2 py-1 text-white rounded shadow-md bottom-0 mb-2 right-0 mr-2 hover:bg-blue-300 ">
-        Study
-      </button>
-    </router-link>
-      <!--
-      <button v-if="!userSubscribed" class="ml-2 bg-gray-500 px-2 py-1 text-white rounded shadow-md bottom-0" @click="subscribe">
-        Subscribe
-      </button>
-      <button v-else class="ml-2 bg-gray-400 px-2 py-1 text-white rounded shadow-md bottom-0" @click="unsubscribe">
-        <span class="subscribed">Subscribed</span>
-        <span class="unsubscribe">Unsubscribe</span>
-      </button> -->
+    <button v-if="!comingSoon" @click="pushToSubject" class="absolute text-sm md:text-base lg:text-base bg-blue-500 px-2 py-1 text-white rounded shadow-md bottom-0 mb-2 right-0 mr-2 hover:bg-blue-300 ">
+      Study
+    </button>
+    <button v-else @click="pushToSubject" class="absolute text-sm md:text-base lg:text-base bg-blue-500 px-2 py-1 text-white rounded shadow-md bottom-0 mb-2 right-0 mr-2 hover:bg-gray-400">
+      <span class="study">Study</span>
+      <span class="coming-soon">Coming Soon!</span>
+    </button>
   </div>
 </template>
 
@@ -27,7 +21,8 @@ export default {
   props: {
     subjectName: String,
     numCards: Number,
-    userSubscribed: Boolean
+    userSubscribed: Boolean,
+    comingSoon: Boolean,
   },
   data() {
     return {
@@ -35,24 +30,28 @@ export default {
     }
   },
   methods: {
-    updateFlashcards() {
-      
-    },
-    subscribe() {
-
+    pushToSubject() {
+      if (this.comingSoon === true) {
+        //document.getElementById("subjectCard").classList.toggle("fade-out");
+      } else {
+        this.$router.push(this.subjectPath);
+      }
     }
-  }
+  },
 }
 </script>
 
 <style scoped>
-button .unsubscribe { 
+button .coming-soon { 
   display: none; 
 }
-button:hover .subscribed { 
+button:hover .study { 
   display: none; 
 }
-button:hover .unsubscribe { 
+button:hover .coming-soon { 
   display: inline; 
+}
+.fade-out {
+  opacity: .4;
 }
 </style>

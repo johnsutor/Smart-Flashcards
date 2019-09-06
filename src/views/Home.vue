@@ -18,6 +18,11 @@ export default {
   name: 'home',
   components: {
     LoginBox
+  },
+  beforeCreate() {
+    if (this.$store.getters.GetCurrentUserProfile.username) {
+      this.$router.push('/dashboard');
+    }
   }
 }
 </script>
