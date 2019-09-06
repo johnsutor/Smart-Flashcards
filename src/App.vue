@@ -1,9 +1,7 @@
 <template>
   <div id="app">
     <NavBar></NavBar>
-    <div class="flex content py-10 px-4 w-full">
-      <router-view></router-view>
-    </div>
+    <router-view class="flex content py-10 px-4 w-full"></router-view>
   </div>
 </template>
 
