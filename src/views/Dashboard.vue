@@ -3,7 +3,7 @@
    <!-- User Subjects -->
     <h1 class="ml-2 mt-4 pb-4 text-2xl">Your Subjects</h1>
     <div class="flex flex-wrap ">
-      <Subject v-for="(subject, index) in user_subjects" :key="index" :subject="subject"></Subject>
+      <Subject v-for="(subject, index) in user_subjects" :key="index" :subject="subject.data()" :subject_ref="subject.ref"></Subject>
     </div>
     <!-- All Subjects -->
     <h1 class="ml-2 mt-4 pb-4 text-2xl">Explore Subjects</h1>
@@ -20,24 +20,23 @@ export default {
   name: 'PageDashboard',
   data() {
     return {
-      all_subjects: Array,
-      user_subjects: Array,
+      all_subjects: [],
+      user_subjects: [],
     }
   },
   created() {
     // Fetch subjects from the user's subscriptions
-    for(let i = 0; i < this.$store.getters.GetCurrentUserProfile.subjects.length; i++) {
-      firebase.firestore().collection('subjects').doc(this.$store.getters.GetCurrentUserProfile.subjects[i]).get()
-      .then( subject => {
-        this.user_subjects.push(subject.data())
-      })
-    }
+    // if(this.$store.getters.GetCurrentUserProfile.subjects.length > 0) {
+      for(var subject_name in this.$store.getters.GetCurrentUserProfile.subjects.length) {
+        console.log(subject_name)
+      }
+    // }
 
     // Fetch all subjects
     firebase.firestore().collection('subjects').get()
     .then( subjects_ref => {
       subjects_ref.forEach( subject => {
-        this.all_subjects.push(subject.data())
+        this.all_subjects.push(subject)
       })
     }) 
   },

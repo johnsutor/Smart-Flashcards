@@ -7,7 +7,7 @@
       <img src="@/assets/undraw_problem_solving_ft81.svg" alt="Problem Solving"
       class="mx-auto w-1/2">
       <br>
-      <h2 class="text-2xl lg:text-4xl font-bold">
+      <h2 class="text-2xl lg:text-4xl font-light">
         Questions that utilize reinforcement learning to optimize your studying experience.
       </h2>
     </div>
